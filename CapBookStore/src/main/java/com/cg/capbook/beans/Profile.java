@@ -12,25 +12,37 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Profile {
 
 	@Id
+	@NotEmpty
+	@Email
 	private String  emailId;
+	@NotEmpty
 	private String password;
+	@NotEmpty
 	private String firstName;
+	@NotEmpty
 	private String lastName;
+	@NotEmpty
 	private String dateOfBirth;
 	private String gender;
+	@NotEmpty
 	private String mobileNo;
 	private String securityQstn;
 	private String securityAns;
 
 	@Column(columnDefinition="BLOB")
 	private byte[] profilePic;
+	@NotEmpty
 	private String country;
+	@NotEmpty
 	private String city;
+	@NotEmpty
 	private String designation;
 	private String relationshipStatus;
 
