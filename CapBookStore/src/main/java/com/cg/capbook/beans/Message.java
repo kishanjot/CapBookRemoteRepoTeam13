@@ -6,6 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
+
 @Entity
 public class Message{
 	@Id
@@ -14,13 +15,16 @@ public class Message{
 	private String  senderEmailId;
 	private String receiverEmailId;
 	private String message;
+	
 	@ManyToOne 
 	@MapKey
 	@JoinColumn(name="friendId")
 	private Friend friend;
+	
 	public Message() {
 		super();
 	}
+	
 	public Message(int messageId, String senderEmailId, String receiverEmailId, String message) {
 		super();
 		this.messageId = messageId;
@@ -28,30 +32,35 @@ public class Message{
 		this.receiverEmailId = receiverEmailId;
 		this.message = message;
 	}
+	
 	public int getMessageId() {
 		return messageId;
 	}
 	public void setMessageId(int messageId) {
 		this.messageId = messageId;
 	}
+	
 	public String getSenderEmailId() {
 		return senderEmailId;
 	}
 	public void setSenderEmailId(String senderEmailId) {
 		this.senderEmailId = senderEmailId;
 	}
+	
 	public String getReceiverEmailId() {
 		return receiverEmailId;
 	}
 	public void setReceiverEmailId(String receiverEmailId) {
 		this.receiverEmailId = receiverEmailId;
 	}
+	
 	public String getMessage() {
 		return message;
 	}
 	public void setMessage(String message) {
 		this.message = message;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -62,6 +71,7 @@ public class Message{
 		result = prime * result + ((senderEmailId == null) ? 0 : senderEmailId.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -90,6 +100,7 @@ public class Message{
 			return false;
 		return true;
 	}
+	
 	@Override
 	public String toString() {
 		return "Message [messageId=" + messageId + ", senderEmailId=" + senderEmailId + ", receiverEmailId="
