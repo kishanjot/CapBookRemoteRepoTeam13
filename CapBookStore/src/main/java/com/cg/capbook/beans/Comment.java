@@ -1,11 +1,11 @@
 package com.cg.capbook.beans;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapKey;
 import javax.persistence.Table;
 
 @Entity
@@ -19,7 +19,7 @@ public class Comment {
 	private String commentPerson;
 	
 	@ManyToOne
-	@MapKey
+	/* @MapKey */
 	@JoinColumn(name="postId")
 	private Post posts;
 	

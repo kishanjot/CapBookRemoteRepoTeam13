@@ -17,7 +17,6 @@ public class CapbookMvcConfig implements WebMvcConfigurer{
 		return new LocalValidatorFactoryBean();
 	}
 
-	
 	@Bean
 	public InternalResourceViewResolver getInternalsInternalResourceViewResolver() {
 		InternalResourceViewResolver ref=new InternalResourceViewResolver();

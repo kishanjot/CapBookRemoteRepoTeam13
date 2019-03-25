@@ -1,6 +1,5 @@
 package com.cg.capbook.aspect;
 
-
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.servlet.ModelAndView;
@@ -11,6 +10,6 @@ public class CapbookExceptionAspect {
 	
 	@ExceptionHandler(NoUserFoundException.class)
 	public ModelAndView handelNoUserFoundException(Exception e) {
-		return new ModelAndView("findUserPage","errorMessage",e.getMessage());
+		return new ModelAndView("indexPage","errorMessage",e.getMessage());
 	}
 }

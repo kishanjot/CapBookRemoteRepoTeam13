@@ -1,10 +1,8 @@
-package com.cg.capbook.servivces;
+package com.cg.capbook.services;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import com.cg.billing.exceptions.CustomerDetailsNotFoundException;
 import com.cg.capbook.beans.Comment;
 import com.cg.capbook.beans.Friend;
 import com.cg.capbook.beans.Message;
@@ -19,9 +17,12 @@ import com.cg.capbook.daoservices.PostDAO;
 import com.cg.capbook.daoservices.ProfileDAO;
 import com.cg.capbook.exceptions.EmailAlreadyExistsException;
 import com.cg.capbook.exceptions.InvalidEmailIdException;
+import com.cg.capbook.exceptions.InvalidPasswordException;
+import com.cg.capbook.exceptions.NoUserFoundException;
 
 @Component("capbookServices")
 public class CapbookServiceImpl implements CapbookServices{
+
 	@Autowired
 	ProfileDAO profileDao;
 	@Autowired
@@ -41,7 +42,9 @@ public class CapbookServiceImpl implements CapbookServices{
 	Message messages;
 	Friend friends;
 	Comment comments;
-	static String sessionEmailId;
+	static String currentEmailId;
+	static String currentPassword;
+
 
 	@Override
 	public Profile signUpUser(Profile profile) throws EmailAlreadyExistsException {
@@ -52,38 +55,50 @@ public class CapbookServiceImpl implements CapbookServices{
 	}
 
 	@Override
-	public Profile loginUser(Profile profile) throws InvalidEmailIdException {
-		Profile profile1=profileDao.findById(profile.getEmailId()).orElseThrow(()->new InvalidEmailIdException("Incorrect EmailId Entered!"));
-		sessionEmailId=profile.getEmailId();
-		return profile1;
+	public Profile loginUser(String emailId,String password) throws InvalidEmailIdException, InvalidPasswordException  {
+		Profile profile1=profileDao.findById(emailId).orElseThrow(()->new InvalidEmailIdException("Incorrect EmailId Entered!"));
+		currentEmailId=profile1.getEmailId();
+		if( profile1.getPassword().equals(password) )	
+			return profile1;
+		throw new InvalidPasswordException("Invalid Pssword")  ;
 	}
 
 	@Override
 	public Profile logout() {
-		sessionEmailId=null;
-		return null;
-	}
-
-	
-	@Override
-	public Profile editProfile(Profile profile) {
+		currentEmailId=null;
 		return null;
 	}
 
 	@Override
-	public Profile insertProfilePic(byte[] profilePhoto) {
+	public Profile editProfile(Profile profile) throws InvalidEmailIdException {
+		return profile;
+//		Profile profile1=profileDao.findById(currentEmailId).orElseThrow(()->new InvalidEmailIdException());
+//		if(!profile.getCity().isEmpty())
+//			profile1.setCity(profile.getCity());
+//		profile= profileDao.save(profile1);
+//		profile.setProfilePic(null);
+//		return profile;
+	}
+
+	@Override
+	public Profile insertProfilePic(byte[] profilePic) {
 		return null;
 	}
 
 	@Override
-	public byte[] fetchProfilePhoto() {
-		// TODO Auto-generated method stub
-		return null;
+	public byte[] fetchProfilePic() {
+		Profile profile=profileDao.findById(currentEmailId).get();		
+		return profile.getProfilePic();
 	}
 
 	@Override
-	public List<Profile> searchAllUsersByName(String userName) {
-		// TODO Auto-generated method stub
+	public List<Profile> searchAllUsersByName(String userName) throws NoUserFoundException {
+		//		List<Profile> listUser=profileDao.searchAllUsersByName(userName);
+		//		for (Profile profile : listUser) 
+		//			profile.setProfilePic(null);
+		//		if(listUser.isEmpty())
+		//			throw new NoUserFoundException();
+		//		return listUser;
 		return null;
 	}
 
@@ -161,8 +176,9 @@ public class CapbookServiceImpl implements CapbookServices{
 
 	@Override
 	public Post createPost(Post post) {
-		// TODO Auto-generated method stub
-		return null;
+		post.setEmailId(currentEmailId);
+		postDao.save(post);
+		return post;
 	}
 
 	@Override
@@ -190,4 +206,8 @@ public class CapbookServiceImpl implements CapbookServices{
 	}
 
 
+
 }
+
+
+

@@ -1,4 +1,4 @@
-package com.cg.capbook.servivces;
+package com.cg.capbook.services;
 
 import java.util.List;
 import com.cg.capbook.beans.Comment;
@@ -6,16 +6,20 @@ import com.cg.capbook.beans.Friend;
 import com.cg.capbook.beans.Message;
 import com.cg.capbook.beans.Post;
 import com.cg.capbook.beans.Profile;
+import com.cg.capbook.exceptions.EmailAlreadyExistsException;
+import com.cg.capbook.exceptions.InvalidEmailIdException;
+import com.cg.capbook.exceptions.InvalidPasswordException;
+import com.cg.capbook.exceptions.NoUserFoundException;
 
 public interface CapbookServices {
 
-	Profile signUpUser(Profile profile);
-	Profile loginUser(Profile profile);
+	Profile signUpUser(Profile profile) throws EmailAlreadyExistsException;
+	 Profile loginUser(String emailId,String password) throws InvalidEmailIdException, InvalidPasswordException;
 	Profile logout();
-	Profile editProfile(Profile profile);
-	Profile insertProfilePic(byte[] profilePhoto);
-	byte[] fetchProfilePhoto();
-	List<Profile> searchAllUsersByName(String userName);
+	Profile editProfile(Profile profile) throws InvalidEmailIdException;
+	Profile insertProfilePic(byte[] profilePic);
+	byte[] fetchProfilePic();
+	List<Profile> searchAllUsersByName(String userName) throws NoUserFoundException;
 	
 	Profile changePassword(String newPassword);
 	String forgotPassword(String emailId, String securityQstn, String securityAns);

@@ -1,6 +1,5 @@
 package com.cg.capbook;
 
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -17,7 +16,3 @@ public class CapBookStoreApplication {
 		SpringApplication.run(CapBookStoreApplication.class, args);
 	}
 }
-
-
-
-

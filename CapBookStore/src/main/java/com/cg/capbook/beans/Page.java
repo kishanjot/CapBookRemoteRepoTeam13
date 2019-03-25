@@ -3,6 +3,7 @@ package com.cg.capbook.beans;
 import java.util.Map;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -12,7 +13,8 @@ public class Page {
 	private int pageId;
 	private int pageLikes;
 	
-	@OneToMany
+	@OneToMany(mappedBy="page")
+	@MapKey
 	private Map<Integer, Post> posts;
 	
 	public Page() {

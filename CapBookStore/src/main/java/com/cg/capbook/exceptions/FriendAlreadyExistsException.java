@@ -2,6 +2,8 @@ package com.cg.capbook.exceptions;
 
 public class FriendAlreadyExistsException extends Exception {
 
+	private static final long serialVersionUID = 1L;
+
 	public FriendAlreadyExistsException() {
 		super();
 	}
