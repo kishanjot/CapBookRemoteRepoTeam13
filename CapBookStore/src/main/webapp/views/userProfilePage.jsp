@@ -33,8 +33,6 @@
 </head>
 <body>
 Login Done!
-
-<input type="submit" class="submit1" value="logout" />
-
+<a href=logoutUser><button>Logout</button></a>
 </body>
 </html>
