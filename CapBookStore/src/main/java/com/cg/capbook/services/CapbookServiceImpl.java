@@ -70,70 +70,75 @@ public class CapbookServiceImpl implements CapbookServices{
 	}
 
 	@Override
-	public Profile editProfile(Profile profile) throws InvalidEmailIdException {
-		return profile;
-//		Profile profile1=profileDao.findById(currentEmailId).orElseThrow(()->new InvalidEmailIdException());
-//		if(!profile.getCity().isEmpty())
-//			profile1.setCity(profile.getCity());
-//		profile= profileDao.save(profile1);
-//		profile.setProfilePic(null);
-//		return profile;
+	public Profile editProfile(String emailId,String userName) throws InvalidEmailIdException, NoUserFoundException {
+		Profile profile1=getUserDetails(emailId);
+		profile1.setUserName(userName);
+		return profileDao.save(profile1);
 	}
 
 	@Override
-	public Profile insertProfilePic(byte[] profilePic) {
+	public Profile insertProfilePic(String emailId, byte[] profilePic) {
+		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public byte[] fetchProfilePic() {
-		Profile profile=profileDao.findById(currentEmailId).get();		
-		return profile.getProfilePic();
+		Profile profile2=profileDao.findById(currentEmailId).get();		
+		return profile2.getProfilePic();
 	}
 
 	@Override
-	public List<Profile> searchAllUsersByName(String userName) throws NoUserFoundException {
-		//		List<Profile> listUser=profileDao.searchAllUsersByName(userName);
-		//		for (Profile profile : listUser) 
-		//			profile.setProfilePic(null);
-		//		if(listUser.isEmpty())
-		//			throw new NoUserFoundException();
-		//		return listUser;
-		return null;
+	public Profile getUserDetails(String emailId) throws NoUserFoundException {
+		Profile profile3=profileDao.findById(emailId).orElseThrow(()->new NoUserFoundException("User Not Found!"));
+		return profile3;
 	}
 
 	@Override
-	public Profile changePassword(String newPassword) {
+	public boolean changePassword(String emailId, String oldPassword, String newPassword) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
+	@Override
+	public boolean forgotPassword(String emaildId, String password, String securityQstn, String securityAns) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean sendFriendRequest(String senderEmailId, String receiverEmailId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean confirmFriendRequest(String senderEmailId, String receiverEmailId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean declineFriendRequest(String senderEmailId, String receiverEmailId) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void showAllFriendRequest(String emailId) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public Friend inviteFriend(String senderEmailId, String receiverEmailId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public String forgotPassword(String emailId, String securityQstn, String securityAns) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Friend acceptFriend(String fromSenderId, String toReceiverId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Friend rejectFriend(String fromSenderId, String toReceiverId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Friend inviteFriend(String fromSenderId, String toReceiverId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Friend referFriend(String fromSenderId, String toReceiverId) {
+	public Friend referFriend(String senderEmailId, String receiverEmailId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -204,9 +209,6 @@ public class CapbookServiceImpl implements CapbookServices{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
-
-
 }
 
 

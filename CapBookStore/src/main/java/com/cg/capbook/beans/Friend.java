@@ -1,123 +1,62 @@
 package com.cg.capbook.beans;
 
-import java.util.Map;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.MapKey;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Friend {
 	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int friendId;
-	private String fromSenderId;
-	private String toReceiverId;
-	private boolean friendshipStatus;
+	private String emailId;
+	private String firstName;
+	private String lastName;
 	
-	@ManyToMany
-	@MapKey
-	private Map<Integer, Message> messages;
+	@ManyToOne
+	private Profile profile;
 	
 	public Friend() {
 		super();
 	}
-	
-	public Friend(int friendId, String fromSenderId, String toReceiverId) {
+
+	public Friend(String emailId, String firstName, String lastName, Profile profile) {
 		super();
-		this.friendId = friendId;
-		this.fromSenderId = fromSenderId;
-		this.toReceiverId = toReceiverId;
+		this.emailId = emailId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.profile = profile;
 	}
-	
-	public Friend(String toReceiverId, String fromSenderId) {
-		this.toReceiverId=toReceiverId;
-		this.fromSenderId=fromSenderId;
+
+	public String getEmailId() {
+		return emailId;
 	}
-	
-	public int getFriendId() {
-		return friendId;
+	public void setEmailId(String emailId) {
+		this.emailId = emailId;
 	}
-	public void setFriendId(int friendId) {
-		this.friendId = friendId;
+
+	public String getFirstName() {
+		return firstName;
 	}
-	
-	public String getfromSenderId() {
-		return fromSenderId;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
-	public void setfromSenderId(String fromSenderId) {
-		this.fromSenderId = fromSenderId;
+
+	public String getLastName() {
+		return lastName;
 	}
-	
-	public String gettoReceiverId() {
-		return toReceiverId;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
-	public void settoReceiverId(String toReceiverId) {
-		this.toReceiverId = toReceiverId;
+
+	public Profile getProfile() {
+		return profile;
 	}
-	
-	public boolean isFriendshipStatus() {
-		return friendshipStatus;
+	public void setProfile(Profile profile) {
+		this.profile = profile;
 	}
-	public void setFriendshipStatus(boolean friendshipStatus) {
-		this.friendshipStatus = friendshipStatus;
-	}
-	
-	public Map<Integer, Message> getMessages() {
-		return messages;
-	}
-	public void setMessages(Map<Integer, Message> messages) {
-		this.messages = messages;
-	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + friendId;
-		result = prime * result + (friendshipStatus ? 1231 : 1237);
-		result = prime * result + ((fromSenderId == null) ? 0 : fromSenderId.hashCode());
-		result = prime * result + ((messages == null) ? 0 : messages.hashCode());
-		result = prime * result + ((toReceiverId == null) ? 0 : toReceiverId.hashCode());
-		return result;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Friend other = (Friend) obj;
-		if (friendId != other.friendId)
-			return false;
-		if (friendshipStatus != other.friendshipStatus)
-			return false;
-		if (fromSenderId == null) {
-			if (other.fromSenderId != null)
-				return false;
-		} else if (!fromSenderId.equals(other.fromSenderId))
-			return false;
-		if (messages == null) {
-			if (other.messages != null)
-				return false;
-		} else if (!messages.equals(other.messages))
-			return false;
-		if (toReceiverId == null) {
-			if (other.toReceiverId != null)
-				return false;
-		} else if (!toReceiverId.equals(other.toReceiverId))
-			return false;
-		return true;
-	}
-	
+
 	@Override
 	public String toString() {
-		return "Friend [friendId=" + friendId + ", fromSenderId=" + fromSenderId + ", toReceiverId=" + toReceiverId
-				+ ", friendshipStatus=" + friendshipStatus + "]";
+		return "Friend [emailId=" + emailId + ", firstName=" + firstName + ", lastName=" + lastName + ", profile="
+				+ profile + "]";
 	}
 }

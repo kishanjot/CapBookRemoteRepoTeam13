@@ -54,7 +54,7 @@ h1.h {
 
 <html>
 
-<title>Capbook Style Homepage Design using HTML and CSS</title>
+<title>Capbook</title>
 <head>
 <link type="text/css" rel="stylesheet" href="style.css" />
 <meta name="Description"
@@ -272,6 +272,7 @@ body {
 	height: 60px;
 }
 </style>
+
 <body>
 <!-- ---LOGIN     -->
 	<div class="fb-header-base"></div>
@@ -315,7 +316,7 @@ body {
 				 <form:input placeholder="Mobile Number" type="text" id="mailbox" path="mobileNo"/><br> 
 				<form:input placeholder="Password" type="password" id="mailbox"  path="password"/><br> 
 				<form:input 	type="date" id="namebox"  path="dateOfBirth"/><br>
-			<br> <input type="radio" id="r-b" name="sex" value="male" />Male
+			<br> <input type="radio" id="r-b" name="sex" value="male" checked="checked"/>Male
 			<input type="radio" id="r-b" name="sex" value="female" />Female<br>
 			<br>
 			<p id="intro4">By clicking Create an account, you agree to our

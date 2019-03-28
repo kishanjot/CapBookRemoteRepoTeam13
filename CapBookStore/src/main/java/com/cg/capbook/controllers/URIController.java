@@ -13,10 +13,10 @@ public class URIController {
 		return "indexPage";
 	}
 
-	@RequestMapping("/logout") 
-	public String getLogoutPage() {
-		return "indexPage"; 
-	}
+//	@RequestMapping("/logout") 
+//	public String getLogoutPage() {
+//		return "indexPage"; 
+//	}
 
 	/*
 	 * @RequestMapping("/changePassword") public String getChangePasswordPage() {

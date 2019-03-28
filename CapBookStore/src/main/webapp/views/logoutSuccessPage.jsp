@@ -8,15 +8,13 @@
 </head>
 <body>
 	<div align="center">
-		<h2>Welcome ${profile.firstName} ${profile.lastName} Your
-			SignUp Has Been Done Successfully :)</h2>
-		<h2>EmailId:-${profile.emailId}</h2>
-		<br> <a href="index"><h4><u>Back To Home Page</h4></u></a>
+		<h2>You have been logged out !</h2>
+		<br> <a href="index"><h4><u>Back To Home Page</u></h4></a>
 	</div>
 </body>
 </html> --%>
-------------------------------------------------------------
 
+------------------------------------------------------------------------------------------------------
 
 <!DOCTYPE html>
 <html>
@@ -75,10 +73,7 @@ body, html {
 		<img src="https://static1.squarespace.com/static/54ff4e2ee4b0c31d3c0f20bb/t/5a633f08e4966be2942a0e40/1516453741436/back-to-main-page-of-tajweed-rules-in-English.png" style="width:128px;height:128px;"></div>
 <div class="bg-text">
   
- <h2>Welcome ${profile.firstName} ${profile.lastName} Your
-			SignUp Has Been Done Successfully :)</h2>
-		<h2>EmailId:-${profile.emailId}</h2>
-		<br> <a href="index"><h4><u>Back To Home Page</h4></u></a>
+  <h2>You Have Been Logged Out :(</h2>
   <br>
   <a href="index">
   <img border="0"  width="250" height="40">
@@ -87,4 +82,3 @@ body, html {
 
 </body>
 </html>
-

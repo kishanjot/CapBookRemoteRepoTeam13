@@ -16,18 +16,20 @@ public interface CapbookServices {
 	Profile signUpUser(Profile profile) throws EmailAlreadyExistsException;
 	 Profile loginUser(String emailId,String password) throws InvalidEmailIdException, InvalidPasswordException;
 	Profile logout();
-	Profile editProfile(Profile profile) throws InvalidEmailIdException;
-	Profile insertProfilePic(byte[] profilePic);
+	public Profile editProfile(String emailId,String userName) throws InvalidEmailIdException, NoUserFoundException;
+	Profile insertProfilePic(String emailId,byte[] profilePic);
 	byte[] fetchProfilePic();
-	List<Profile> searchAllUsersByName(String userName) throws NoUserFoundException;
+	public Profile getUserDetails(String emailId) throws NoUserFoundException;
 	
-	Profile changePassword(String newPassword);
-	String forgotPassword(String emailId, String securityQstn, String securityAns);
+	public boolean changePassword(String emailId,String oldPassword,String newPassword);
+	 public boolean forgotPassword(String emaildId, String password,String securityQstn,String securityAns);
 	
-	Friend acceptFriend(String fromSenderId, String toReceiverId);
-	Friend rejectFriend(String fromSenderId, String toReceiverId) ;
-	Friend inviteFriend(String fromSenderId, String toReceiverId);
-	Friend referFriend(String fromSenderId, String toReceiverId);
+	 public boolean sendFriendRequest(String senderEmailId, String receiverEmailId);
+	 public boolean confirmFriendRequest(String senderEmailId,String receiverEmailId);
+	 public boolean declineFriendRequest(String senderEmailId, String receiverEmailId);
+	 public void showAllFriendRequest(String emailId);
+	Friend inviteFriend(String senderEmailId, String receiverEmailId);
+	Friend referFriend(String senderEmailId, String receiverEmailId);
 	List<Profile> getFriendList();
 	
 	Friend addFriend(String toUserId);

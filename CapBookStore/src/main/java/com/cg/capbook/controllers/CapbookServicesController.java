@@ -12,6 +12,7 @@ import com.cg.capbook.beans.Profile;
 import com.cg.capbook.exceptions.EmailAlreadyExistsException;
 import com.cg.capbook.exceptions.InvalidEmailIdException;
 import com.cg.capbook.exceptions.InvalidPasswordException;
+import com.cg.capbook.exceptions.NoUserFoundException;
 import com.cg.capbook.services.CapbookServices;
 
 @Controller
@@ -37,11 +38,16 @@ public class CapbookServicesController {
 	}
 
 	@RequestMapping("/logoutUser") 
-	public ModelAndView logout() { 
-		Profile profile=capbookServices.logout(); 
-	return new ModelAndView("indexPage","profile",profile); 
+	public ModelAndView logout() throws NoUserFoundException{ 
+		capbookServices.logout(); 
+		return new ModelAndView("logoutSuccessPage","profile",null); 
 	}
-
+	
+	@RequestMapping("/editProfile") 
+	public ModelAndView editProfile(@RequestParam String emailId,@RequestParam String userName) throws InvalidEmailIdException, NoUserFoundException { 
+	Profile profile=	capbookServices.editProfile(emailId, userName); 
+		return new ModelAndView("userProfilePage","profile",profile); 
+	}
 
 
 	/*
