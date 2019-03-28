@@ -25,6 +25,11 @@ public class URIController {
 	 * @RequestMapping("/createPost") public String getCreatePostPage() { return
 	 * "createPostPage"; }
 	 */
+	
+	@RequestMapping("/uploadPic")
+	public String uploadImage() {
+		return "imageUploadPage";
+	}
 
 	@ModelAttribute
 	public Profile getProfile() {

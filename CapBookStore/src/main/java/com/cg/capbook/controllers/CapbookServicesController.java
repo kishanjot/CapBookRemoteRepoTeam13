@@ -1,5 +1,6 @@
 package com.cg.capbook.controllers;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +8,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.cg.capbook.beans.Profile;
 import com.cg.capbook.exceptions.EmailAlreadyExistsException;
@@ -14,6 +16,7 @@ import com.cg.capbook.exceptions.InvalidEmailIdException;
 import com.cg.capbook.exceptions.InvalidPasswordException;
 import com.cg.capbook.exceptions.NoUserFoundException;
 import com.cg.capbook.services.CapbookServices;
+import com.cg.capbook.services.UserDetailsNotFoundException;
 
 @Controller
 public class CapbookServicesController {
@@ -43,10 +46,17 @@ public class CapbookServicesController {
 		return new ModelAndView("logoutSuccessPage","profile",null); 
 	}
 	
-	@RequestMapping("/editProfile") 
-	public ModelAndView editProfile(@RequestParam String emailId,@RequestParam String userName) throws InvalidEmailIdException, NoUserFoundException { 
-	Profile profile=	capbookServices.editProfile(emailId, userName); 
-		return new ModelAndView("userProfilePage","profile",profile); 
+	/*
+	 * @RequestMapping("/editProfile") public ModelAndView editProfile(@RequestParam
+	 * String emailId,@ModelAttribute String userName) throws
+	 * InvalidEmailIdException, NoUserFoundException { Profile profile=
+	 * capbookServices.editProfile(emailId, multipartfile); return new
+	 * ModelAndView("userHomePage","profile",profile); }
+	 */
+	
+	@RequestMapping("/uploadImage")
+	public ModelAndView editPic(@RequestParam MultipartFile file, HttpSession session) throws UserDetailsNotFoundException, NoUserFoundException {
+		return new ModelAndView("imageUploadPage", "profile", capbookServices.addProfilePic((String) session.getAttribute("emailId"), file));
 	}
 
 

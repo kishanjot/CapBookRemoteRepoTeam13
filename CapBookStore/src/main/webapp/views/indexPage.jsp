@@ -1,53 +1,3 @@
-<%-- <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html>
-<html>
-<head>
- <style>
-.index1 {
-	width: 500px;
-	margin: auto;
-	border: 5px solid black;
-	background-color: lightorange;
-	background-position: center top;
-	background-color: yellow;
-	padding-top: 20px;
-	padding-right: 15px;
-	padding-bottom: 30px;
-	padding-left: 15px;
-}
-
-h1.h {
-	border-bottom: 6px solid red;
-	background-color: lightgrey;
-	color: green;
-	text: bold;
-}
-</style>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
-</head>
-<body>
-	<div align="center" class="index1">
-		<h1 class="h">*Cap-Book*</h1>
-		<br>
-		<table>
-			<tr>
-				<td>1) Click Here to</td>
-				<td><a href="registration"> Sign Up </a></td>
-			</tr>
-			<tr>
-				<td>2) Click Here to</td>
-				<td><a href="login"> Log In </a></td>
-			</tr>
-		</table>
-	</div>
-</body>
-</html> --%>
-
------------------------------------------------------------------------------------------------
-
-
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -126,13 +76,14 @@ body {
 .submit1 {
 	left: 1130px;
 	top: 35px;
-	background: #5b7bc0;
+	background: #fcfdff;
 	color: black;
 	position: fixed;
 	z-index: 20;
 	height: 22px;
 	width: 50px;
 	cursor: pointer;
+	position: absolute;
 }
 
 .fb-body {
@@ -289,7 +240,7 @@ body {
 				name="password"  path="password"/><br> Forgot your password?
 		</div>
 	
-	<input type="submit" class="submit1" value="login" />
+	<input type="submit" class="submit1" value="Login" />
 	</form:form>
 	</div>
 	

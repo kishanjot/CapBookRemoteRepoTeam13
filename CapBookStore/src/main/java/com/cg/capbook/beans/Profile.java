@@ -1,7 +1,5 @@
 package com.cg.capbook.beans;
 
-import java.util.Arrays;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
@@ -27,8 +25,7 @@ public class Profile {
 	@NotEmpty
 	private String mobileNo;
 
-	@Column(columnDefinition = "BLOB")
-	private byte[] profilePic;
+	private String profilePic;
 	@NotEmpty
 	private String country;
 	@NotEmpty
@@ -53,7 +50,7 @@ public class Profile {
 	
 	public Profile(@NotEmpty @Email String emailId, @NotEmpty String password, @NotEmpty String firstName,
 			@NotEmpty String lastName, String userName, @NotEmpty String dateOfBirth, String gender,
-			@NotEmpty String mobileNo, byte[] profilePic, @NotEmpty String country, @NotEmpty String city) {
+			@NotEmpty String mobileNo, String profilePic, @NotEmpty String country, @NotEmpty String city) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
@@ -124,10 +121,10 @@ public class Profile {
 		this.gender = gender;
 	}
 
-	public byte[] getProfilePic() {
+	public String getProfilePic() {
 		return profilePic;
 	}
-	public void setProfilePic(byte[] profilePic) {
+	public void setProfilePic(String profilePic) {
 		this.profilePic = profilePic;
 	}
 
@@ -156,8 +153,7 @@ public class Profile {
 	public String toString() {
 		return "Profile [emailId=" + emailId + ", password=" + password + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", userName=" + userName + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender
-				+ ", mobileNo=" + mobileNo + ", profilePic=" + Arrays.toString(profilePic) + ", country=" + country
-				+ ", city=" + city + "]";
+				+ ", mobileNo=" + mobileNo + ", profilePic=" + profilePic + ", country=" + country + ", city=" + city
+				+ "]";
 	}
-
 }

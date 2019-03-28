@@ -2,9 +2,10 @@
 	pageEncoding="ISO-8859-1"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<title>User Profile Page</title>
+<title>Page Title</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
@@ -20,10 +21,12 @@ body {
 
 /* Header/logo Title */
 .header {
-	padding: 80px;
-	text-align: center;
-	background: #1abc9c;
-	color: white;
+	padding: 50px;
+	text-align: right;
+	/* background-image:url("https://previews.123rf.com/images/alexaldo/alexaldo1409/alexaldo140900388/31775157-abstract-network-global-connections-concept-black-and-white-background.jpg"); 
+ width: 200%; 
+ height: 100%;  */
+	color: black;
 }
 
 /* Increase the font size of the heading */
@@ -85,25 +88,16 @@ body {
 
 /* Fake image, just for this example */
 .fakeimg {
-	padding: 1px;
-	border: 3px solid #021a40;
-	width: 50%;
+	background-color: #aaa;
+	width: 100%;
 	padding: 20px;
 }
+
 /* profile pic radius*/
 #img {
 	border-radius: 50%;
-	width: 200px;
-	height: 200px;
 }
-/*div background image*/
-#bgimg {
-	background-image:
-		url('https://images.unsplash.com/photo-1530103043960-ef38714abb15?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80');
-	background-position: center;
-	background-repeat: no-repeat;
-	background-size: cover;
-}
+
 /* Footer */
 .footer {
 	padding: 20px;
@@ -118,45 +112,6 @@ body {
 	}
 }
 
-.button {
-	display: inline-block;
-	border-radius: 4px;
-	background-color: black;
-	border: none;
-	color: #FFFFFF;
-	text-align: center;
-	font-size: 15px;
-	padding: 3px;
-	width: 100px;
-	transition: all 0.5s;
-	cursor: pointer;
-	margin: 5px;
-}
-
-.button span {
-	cursor: pointer;
-	display: inline-block;
-	position: relative;
-	transition: 0.5s;
-}
-
-.button span:after {
-	content: '\00bb';
-	position: absolute;
-	opacity: 0;
-	top: 0;
-	right: -20px;
-	transition: 0.5s;
-}
-
-.button:hover span {
-	padding-right: 25px;
-}
-
-.button:hover span:after {
-	opacity: 1;
-	right: 0;
-}
 /* Responsive layout - when the screen is less than 400px wide, make the navigation links stack on top of each other instead of next to each other */
 @media screen and (max-width: 400px) {
 	.navbar a {
@@ -164,49 +119,61 @@ body {
 		width: 100%;
 	}
 }
+
 </style>
 </head>
 <body>
 
-	<div class="header" id=bgimg>
-		<div class="fakeimg" id="img" style="height: 200px;">
-	
-		<a href="uploadPic">
-		<input type ="button"  class="button"  value=" upload"style="vertical-align: middle" /> </a>
-	</div></div>
+	<div class="header">
+		<background ="https://previews.123rf.com/images/alexaldo/alexaldo1409/alexaldo140900388/31775157-abstract-network-global-connections-concept-black-and-white-background.jpg" width="2000" height="300"> 
+			<img src="https://shortcut-test2.s3.amazonaws.com/uploads/project/attachment/51762/default_CBICON.png"
+			border="0" align="left" width="350" height="150">
+		<h1 align="center">
+			<b>CAP BOOK</b>
+		</h1>
+		<h3 align="center">Connecting People Since 1947</h3>
+	</div>
 
 	<div class="navbar">
-
-		<a href="#">Photos</a> <a href="#">Friends</a>
-
-
+		<a href="#">Profile</a> 
+		<a href="#">Friends</a> 
+		<a href="#">	Messages</a> 
+		<a href="#">Notifications</a> 
+		
+			<a href="logoutUser" class="right"> Logout</a>
 	</div>
 
 	<div class="row">
 		<div class="side">
-			<h2>About Me</h2>
-
-			<div class="fakeimg" id="img" style="height: 200px;"></div>
-
-
+			<h5>Photo of me:</h5>
+			<div class="fakeimg"  id="img" style="height: 200px;" >Image</div>
+			<p>Some text about me in culpa qui officia deserunt mollit anim..</p>
+			<h3>More Text</h3>
+			<p>Lorem ipsum dolor sit ame.</p>
+			<div class="fakeimg" style="height: 60px;">Image</div>
+			<br>
+			<div class="fakeimg" style="height: 60px;">Image</div>
+			<br>
+			<div class="fakeimg" style="height: 60px;">Image</div>
 		</div>
 		<div class="main">
-			<h2>Add bio</h2>
-			<textarea id="subject" name="subject"
-				placeholder="Add somenthing about you..." style="height: 100px"></textarea>
+			<h2>TITLE HEADING</h2>
+			<h5>Title description, Dec 7, 2017</h5>
+			<div class="fakeimg" style="height: 200px;">Image</div>
+			<p>Some text..</p>
+			<p>Sunt in culpa qui officia deserunt mollit anim id est laborum
+				consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+				exercitation ullamco.</p>
 			<br>
-			<button class="button" style="vertical-align: middle">
-				<span>Post</span>
-			</button>
-
-			<br>
-			<h2>Personal Details</h2>
-			<h5>Lives in Chandigarh</h5>
-			<h5>From Chandigarh</h5>
-			<h5>Mobile number Chandigarh</h5>
-			<h5>Relationship status</h5>
-
-
+			<h2>TITLE HEADING</h2>
+			<h5>Title description, Sep 2, 2017</h5>
+			<div class="fakeimg" style="height: 200px;">Image</div>
+			<p>Some text..</p>
+			<p>Sunt in culpa qui officia deserunt mollit anim id est laborum
+				consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+				labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+				exercitation ullamco.</p>
 		</div>
 	</div>
 
@@ -216,3 +183,5 @@ body {
 
 </body>
 </html>
+
+

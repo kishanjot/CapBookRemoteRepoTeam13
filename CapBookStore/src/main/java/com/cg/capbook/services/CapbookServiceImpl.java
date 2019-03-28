@@ -1,8 +1,13 @@
 package com.cg.capbook.services;
 
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
+
 import com.cg.capbook.beans.Comment;
 import com.cg.capbook.beans.Friend;
 import com.cg.capbook.beans.Message;
@@ -45,6 +50,7 @@ public class CapbookServiceImpl implements CapbookServices{
 	static String currentEmailId;
 	static String currentPassword;
 
+	private static String storageLocation = "C:\\Users\\ADM-IG-HWDLAB1D\\git\\CapBookLocalRepoTeam13\\CapBookStore\\src\\main\\resources\\static\\images\\";
 
 	@Override
 	public Profile signUpUser(Profile profile) throws EmailAlreadyExistsException {
@@ -77,15 +83,17 @@ public class CapbookServiceImpl implements CapbookServices{
 	}
 
 	@Override
-	public Profile insertProfilePic(String emailId, byte[] profilePic) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public byte[] fetchProfilePic() {
-		Profile profile2=profileDao.findById(currentEmailId).get();		
-		return profile2.getProfilePic();
+	public Profile addProfilePic(String emailId, MultipartFile file) throws UserDetailsNotFoundException, NoUserFoundException {
+		Profile profile=getUserDetails(emailId);
+		try {
+			Path path=Paths.get(storageLocation + file.getOriginalFilename());
+			file.transferTo(path);
+			profile.setProfilePic("/images/"+file.getOriginalFilename()); 
+		}
+		catch(IOException e) {
+			e.printStackTrace();	
+		}
+		return profileDao.save(profile);
 	}
 
 	@Override
@@ -209,6 +217,8 @@ public class CapbookServiceImpl implements CapbookServices{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+
 }
 
 

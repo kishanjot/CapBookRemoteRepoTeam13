@@ -1,6 +1,7 @@
 package com.cg.capbook.services;
 
 import java.util.List;
+import org.springframework.web.multipart.MultipartFile;
 import com.cg.capbook.beans.Comment;
 import com.cg.capbook.beans.Friend;
 import com.cg.capbook.beans.Message;
@@ -17,8 +18,7 @@ public interface CapbookServices {
 	 Profile loginUser(String emailId,String password) throws InvalidEmailIdException, InvalidPasswordException;
 	Profile logout();
 	public Profile editProfile(String emailId,String userName) throws InvalidEmailIdException, NoUserFoundException;
-	Profile insertProfilePic(String emailId,byte[] profilePic);
-	byte[] fetchProfilePic();
+	Profile addProfilePic(String emailId, MultipartFile file) throws UserDetailsNotFoundException, NoUserFoundException;
 	public Profile getUserDetails(String emailId) throws NoUserFoundException;
 	
 	public boolean changePassword(String emailId,String oldPassword,String newPassword);
