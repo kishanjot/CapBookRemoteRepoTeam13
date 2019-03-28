@@ -35,7 +35,11 @@
 						<td><input type="file" name = "file" value="Choose the file"/></td>
 					</tr>
 					<tr>
-						<td><input type="submit" value="Upload the file"/></td>
+					
+						<td> 	
+						<a href =editProfile> Upload The File  </a>
+						</td>
+					
 					</tr>
 				</table>
 			</form>

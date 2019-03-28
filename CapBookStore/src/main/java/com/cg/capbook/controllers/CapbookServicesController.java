@@ -37,7 +37,7 @@ public class CapbookServicesController {
 	@RequestMapping("/loginUser")
 	public ModelAndView loginUser( @RequestParam String emailId,@RequestParam String password) throws InvalidEmailIdException, InvalidPasswordException {
 		Profile login =capbookServices.loginUser(emailId,password); 
-		return new ModelAndView("userProfilePage","login",login); 
+		return new ModelAndView("userHomePage","login",login); 
 	}
 
 	@RequestMapping("/logoutUser") 
