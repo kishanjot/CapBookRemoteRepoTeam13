@@ -1,4 +1,4 @@
-package com.cg.capbook.services;
+package com.cg.capbook.exceptions;
 
 public class UserDetailsNotFoundException extends Exception {
 

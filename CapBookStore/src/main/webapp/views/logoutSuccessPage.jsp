@@ -18,7 +18,7 @@ body, html {
 
 .bg-image {
 	/* The image used */
-	background-image: url("cb1.jpg");
+	background-image: url("https://cdn1.medicalnewstoday.com/content/images/articles/010/10566/smoke-in-shape-of-ekg.jpg");
 	/* Add the blur effect */
 	filter: blur(8px);
 	-webkit-filter: blur(8px);

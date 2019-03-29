@@ -24,6 +24,8 @@ public class Profile {
 	private String gender;
 	@NotEmpty
 	private String mobileNo;
+	private String securityQstn;
+	private String securityAns;
 
 	private String profilePic;
 	@NotEmpty
@@ -47,10 +49,11 @@ public class Profile {
 	public Profile() {
 		super();
 	}
-	
+
 	public Profile(@NotEmpty @Email String emailId, @NotEmpty String password, @NotEmpty String firstName,
 			@NotEmpty String lastName, String userName, @NotEmpty String dateOfBirth, String gender,
-			@NotEmpty String mobileNo, String profilePic, @NotEmpty String country, @NotEmpty String city) {
+			@NotEmpty String mobileNo, String securityQstn, String securityAns, String profilePic,
+			@NotEmpty String country, @NotEmpty String city) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
@@ -60,11 +63,12 @@ public class Profile {
 		this.dateOfBirth = dateOfBirth;
 		this.gender = gender;
 		this.mobileNo = mobileNo;
+		this.securityQstn = securityQstn;
+		this.securityAns = securityAns;
 		this.profilePic = profilePic;
 		this.country = country;
 		this.city = city;
 	}
-
 
 	public Profile(@NotEmpty @Email String emailId, @NotEmpty String password) {
 		super();
@@ -149,11 +153,27 @@ public class Profile {
 		this.mobileNo = mobileNo;
 	}
 
+	public String getSecurityQstn() {
+		return securityQstn;
+	}
+
+	public void setSecurityQstn(String securityQstn) {
+		this.securityQstn = securityQstn;
+	}
+
+	public String getSecurityAns() {
+		return securityAns;
+	}
+
+	public void setSecurityAns(String securityAns) {
+		this.securityAns = securityAns;
+	}
+
 	@Override
 	public String toString() {
 		return "Profile [emailId=" + emailId + ", password=" + password + ", firstName=" + firstName + ", lastName="
 				+ lastName + ", userName=" + userName + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender
-				+ ", mobileNo=" + mobileNo + ", profilePic=" + profilePic + ", country=" + country + ", city=" + city
-				+ "]";
+				+ ", mobileNo=" + mobileNo + ", securityQstn=" + securityQstn + ", securityAns=" + securityAns
+				+ ", profilePic=" + profilePic + ", country=" + country + ", city=" + city + "]";
 	}
 }

@@ -18,7 +18,7 @@ body, html {
 
 .bg-image {
 	/* The image used */
-	background-image: url("cb1.jpg");
+	background-image: url("https://cdn1.medicalnewstoday.com/content/images/articles/010/10566/smoke-in-shape-of-ekg.jpg");
 	/* Add the blur effect */
 	filter: blur(8px);
 	-webkit-filter: blur(8px);
@@ -54,7 +54,7 @@ body, html {
 		
 	 
 <div class="bg-text">
-<h1><u>"Welcome to CapBook   ${profile.firstName} ${profile.lastName}"</u></h1>
+<h1>"Welcome to CapBook   ${profile.firstName} ${profile.lastName}"</h1>
   <h2>You Have Been Successfully Registered :)</h2>
   <h2>Your Registered EmailId is:-${profile.emailId}</h2>
   <br>

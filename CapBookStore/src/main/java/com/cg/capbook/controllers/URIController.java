@@ -13,26 +13,18 @@ public class URIController {
 		return "indexPage";
 	}
 
-//	@RequestMapping("/logout") 
-//	public String getLogoutPage() {
-//		return "indexPage"; 
-//	}
-
-	/*
-	 * @RequestMapping("/changePassword") public String getChangePasswordPage() {
-	 * return "changePasswordPage"; }
-	 * 
-	 * @RequestMapping("/createPost") public String getCreatePostPage() { return
-	 * "createPostPage"; }
-	 */
 	@RequestMapping("/editProfile")
-	public String editProfile() {
-		return "userProfilePage";
-	}
-	
+	public String editProfile() { 
+		return  "userProfilePage"; }
+
 	@RequestMapping("/uploadPic")
 	public String uploadImage() {
 		return "imageUploadPage";
+	}
+
+	@RequestMapping("/forgotPassword")
+	public String forgotPasswordPage() {
+		return "ForgotAndResetPasswordPage";
 	}
 
 	@ModelAttribute
@@ -40,4 +32,5 @@ public class URIController {
 		profile=new Profile();
 		return profile;
 	}
+	
 }

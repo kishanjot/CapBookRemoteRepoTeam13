@@ -140,9 +140,7 @@ border-radius: 50%;
   <a href="#">Friends</a>
   <a href="#">Notifiactions</a>
    <a href="logoutUser" class="right">LogOut</a>
-  <a href="editProfile"> 
-<input type="button"  value ="Edit Profile ">
-</a>
+  <a href="editProfile"> Edit Profile</a>
  
 </div>
 

@@ -26,9 +26,9 @@ public class CapbookMvcConfig implements WebMvcConfigurer{
 		return ref;
 	}
 	
-	
-	 @Override public void addResourceHandlers(ResourceHandlerRegistry registry){
-	 registry.addResourceHandler("/**")
+	 @Override 
+	 public void addResourceHandlers(ResourceHandlerRegistry registry){
+	 registry.addResourceHandler("/resources/**")
 	 .addResourceLocations("classpath:/static/"); }
 	 
 

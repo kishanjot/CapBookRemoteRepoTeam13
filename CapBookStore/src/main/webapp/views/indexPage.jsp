@@ -224,7 +224,7 @@ body {
 }
 </style>
 
-<body>
+<body link ="white">
 <!-- ---LOGIN     -->
 	<div class="fb-header-base"></div>
 	<div class="fb-header">
@@ -237,7 +237,8 @@ body {
 
 		<div id="form2" class="fb-header">
 			Password<br> <form:input placeholder="Password" type="password"
-				name="password"  path="password"/><br> Forgot your password?
+				name="password"  path="password"/><br> 
+				<a href="forgotPassword">Forgot Password?</a>
 		</div>
 	
 	<input type="submit" class="submit1" value="Login" />
@@ -253,7 +254,7 @@ body {
 		<div id="intro6" class="fb-body"></div>
 		<div id="intro2" class="fb-body">Create an account</div>
 		<div id="img2" class="fb-body">
-			<img src="cap10.PNG" />
+			<img src="" />
 		</div>
 		<div id="intro3" class="fb-body">It's free and always will be.</div>
 		<div id="form3" class="fb-body">

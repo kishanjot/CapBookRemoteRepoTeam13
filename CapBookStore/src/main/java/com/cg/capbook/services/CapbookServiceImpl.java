@@ -20,10 +20,13 @@ import com.cg.capbook.daoservices.MessageDAO;
 import com.cg.capbook.daoservices.PageDAO;
 import com.cg.capbook.daoservices.PostDAO;
 import com.cg.capbook.daoservices.ProfileDAO;
+import com.cg.capbook.exceptions.BothPasswordsSameException;
 import com.cg.capbook.exceptions.EmailAlreadyExistsException;
+import com.cg.capbook.exceptions.IncorrectSecurityAnswer;
 import com.cg.capbook.exceptions.InvalidEmailIdException;
 import com.cg.capbook.exceptions.InvalidPasswordException;
 import com.cg.capbook.exceptions.NoUserFoundException;
+import com.cg.capbook.exceptions.UserDetailsNotFoundException;
 
 @Component("capbookServices")
 public class CapbookServiceImpl implements CapbookServices{
@@ -102,17 +105,29 @@ public class CapbookServiceImpl implements CapbookServices{
 		return profile3;
 	}
 
+	public String encryptPassword(String password) {
+		String encryptedPassword="";
+		for(int i=password.length()-1; i>=0; i--)
+			encryptedPassword += password.charAt(i);
+		encryptedPassword += "090";
+		return encryptedPassword;
+	}
+	
 	@Override
-	public boolean changePassword(String emailId, String oldPassword, String newPassword) {
-		// TODO Auto-generated method stub
-		return false;
+	public Profile changePassword(String emailId, String password) throws BothPasswordsSameException, NoUserFoundException {
+		Profile profile =  getUserDetails(emailId);
+		if(profile.getPassword().equals(encryptPassword(password)))
+			throw new BothPasswordsSameException("Both the  passwords cannot be same!");
+		profile.setPassword(encryptPassword(password));
+		return profileDao.save(profile);		
 	}
 
-
 	@Override
-	public boolean forgotPassword(String emaildId, String password, String securityQstn, String securityAns) {
-		// TODO Auto-generated method stub
-		return false;
+	public Profile forgotPassword(String emaildId, String password, String securityQstn, String securityAns) throws IncorrectSecurityAnswer, NoUserFoundException {
+		Profile profile = getUserDetails(emaildId);
+		if((!profile.getSecurityQstn().equals(securityQstn))   && (!profile.getSecurityAns().equals(securityAns)))
+			throw new IncorrectSecurityAnswer("Security Question or Password Incorrect!");
+		return profile;
 	}
 
 	@Override

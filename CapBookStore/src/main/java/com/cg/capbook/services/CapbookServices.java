@@ -7,10 +7,13 @@ import com.cg.capbook.beans.Friend;
 import com.cg.capbook.beans.Message;
 import com.cg.capbook.beans.Post;
 import com.cg.capbook.beans.Profile;
+import com.cg.capbook.exceptions.BothPasswordsSameException;
 import com.cg.capbook.exceptions.EmailAlreadyExistsException;
+import com.cg.capbook.exceptions.IncorrectSecurityAnswer;
 import com.cg.capbook.exceptions.InvalidEmailIdException;
 import com.cg.capbook.exceptions.InvalidPasswordException;
 import com.cg.capbook.exceptions.NoUserFoundException;
+import com.cg.capbook.exceptions.UserDetailsNotFoundException;
 
 public interface CapbookServices {
 
@@ -21,8 +24,8 @@ public interface CapbookServices {
 	Profile addProfilePic(String emailId, MultipartFile file) throws UserDetailsNotFoundException, NoUserFoundException;
 	public Profile getUserDetails(String emailId) throws NoUserFoundException;
 	
-	public boolean changePassword(String emailId,String oldPassword,String newPassword);
-	 public boolean forgotPassword(String emaildId, String password,String securityQstn,String securityAns);
+	Profile  changePassword(String emailId,String password) throws BothPasswordsSameException, NoUserFoundException;
+	 Profile  forgotPassword(String emaildId, String password,String securityQstn, String securityAns) throws IncorrectSecurityAnswer, NoUserFoundException;
 	
 	 public boolean sendFriendRequest(String senderEmailId, String receiverEmailId);
 	 public boolean confirmFriendRequest(String senderEmailId,String receiverEmailId);
