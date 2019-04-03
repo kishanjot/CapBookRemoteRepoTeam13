@@ -70,7 +70,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
 body, html {
-	height: 100%;
+	height: 300%;
 	margin: 0;
 	font-family: Arial, Helvetica, sans-serif; <
 	img src="D: \Users\ADM-IG-HWDLAB1D\Desktop " style=" width:128px;
@@ -127,25 +127,11 @@ body, html {
   <br>
   
  
-			<form action="uploadImage" method="post"
-				enctype="multipart/form-data">
-				<table>
-
-					 <tr>
-						<td><font size="5">Email ID :</font></td>
-						<td><input type="email" name="emailId" /></td>
-					</tr>  
-					<tr>
-						<td><font size="5">Choose profile picture :</font></td>
-						<td><input type="file" name="file" value="Choose the file" /></td>
-					</tr>
-					<tr>
-						
-						<td><a href=uploadImage> Upload  Image </a></td>
-				
-					</tr>
-				</table>
-			</form>
+			<form action="savefile" method="post"
+								enctype="multipart/form-data">
+								<input type="file" name="file" /><br> <br><input type="submit"
+									value="Upload Profile Picture" /><br>
+							</form>
 			<div align="center" class="error">
 				<font size="20">${errorMessage}</font>
 			</div>

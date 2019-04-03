@@ -224,27 +224,29 @@ body {
 }
 </style>
 
-<body link ="white">
-<!-- ---LOGIN     -->
+<body link="white">
+	<!-- ---LOGIN     -->
 	<div class="fb-header-base"></div>
 	<div class="fb-header">
-<form:form action="loginUser" method="Post"
-				modelAttribute="profile">
-		<div id="form1" class="fb-header">
-			Email or Phone<br> <form:input placeholder="Email" type="emailId"
-				name="name"  path="emailId"/><br> <input type="checkbox" />Keep me logged in
-		</div>
+		<form:form action="loginUser" method="Post" modelAttribute="profile">
+			<div id="form1" class="fb-header">
+				Email or Phone<br>
+				<form:input placeholder="Email" type="emailId" name="name"
+					path="emailId" />
+				<br> <input type="checkbox" />Keep me logged in
+			</div>
 
-		<div id="form2" class="fb-header">
-			Password<br> <form:input placeholder="Password" type="password"
-				name="password"  path="password"/><br> 
-				<a href="forgotPassword">Forgot Password?</a>
-		</div>
-	
-	<input type="submit" class="submit1" value="Login" />
-	</form:form>
+			<div id="form2" class="fb-header">
+				Password<br>
+				<form:input placeholder="Password" type="password" name="password"
+					path="password" />
+				<br> <a href="forgotPassword">Forgot Password?</a>
+			</div>
+
+			<input type="submit" class="submit1" value="Login" />
+		</form:form>
 	</div>
-	
+
 	<!-- Register -->
 	<div class="fb-body">
 		<div id="intro1" class="fb-body">
@@ -258,26 +260,77 @@ body {
 		</div>
 		<div id="intro3" class="fb-body">It's free and always will be.</div>
 		<div id="form3" class="fb-body">
-		<form:form action="registerUser" method="post"
+			<form:form action="registerUser" method="post"
 				modelAttribute="profile">
-						<form:input placeholder="First Name" type="text" id="namebox" name="name1" path="firstName" />
-			<form:input placeholder="Last Name" type="text" id="namebox" path="lastName"  /> <br>
-			<form:input placeholder="Email" type="text" id="mailbox" path="emailId" /><br> 
-			<form:input placeholder="Country" type="text" id="namebox" path="country" /> 
-			<form:input 	placeholder="City" type="text" id="namebox" path="city"/><br>
-				 <form:input placeholder="Mobile Number" type="text" id="mailbox" path="mobileNo"/><br> 
-				<form:input placeholder="Password" type="password" id="mailbox"  path="password"/><br> 
-				<form:input 	type="date" id="namebox"  path="dateOfBirth"/><br>
-			<br> <input type="radio" id="r-b" name="sex" value="male" checked="checked"/>Male
+				<form:input placeholder="First Name" type="text" id="namebox"
+					name="name1" path="firstName" />
+				<form:input placeholder="Last Name" type="text" id="namebox"
+					path="lastName" />
+				<br>
+				<form:input placeholder="Email" type="text" id="mailbox"
+					path="emailId" />
+				<br>
+				<form:input placeholder="Country" type="text" id="namebox"
+					path="country" />
+				<form:input placeholder="City" type="text" id="namebox" path="city" />
+				<br>
+				<form:input placeholder="Mobile Number" type="text" id="mailbox"
+					path="mobileNo" />
+				<br>
+				<form:input placeholder="Password" type="password" id="mailbox"
+					path="password" />
+				<br>
+				<%-- <form:input placeholder="Security Question" type="listbox" id="listbox"
+					path="securityQstn" /> --%>
+				<form:select name="securityQuestion" path="securityQstn">
+					<option>Security Question</option>
+					<option value="What's your nick name?">What's your nick
+						name?</option>
+					<option value="What's your favourite game?">What's your
+						favourite game?</option>
+					<option value="What's your pet name?">What's your pet
+						name?</option>
+					<option value="What's your favourite car?">What's your
+						favourite car?</option>
+					<option value="What's your favourite book?">What's your
+						favourite book?</option>
+					<option value="What's your birthplace?">What's your Birth
+						Place?</option>
+				</form:select>
+
+				<br>
+				<form:input placeholder="Security Answer" type="text" id="namebox"
+					path="securityAns" />
+				<br>
+				<form:input type="date" id="namebox" path="dateOfBirth" />
+				<br>
+				<br>
+				<input type="radio" id="r-b" name="sex" value="male"
+					checked="checked" />Male
 			<input type="radio" id="r-b" name="sex" value="female" />Female<br>
-			<br>
-			<p id="intro4">By clicking Create an account, you agree to our
-				Terms and that you have read our Data Policy, including our Cookie
-				Use.</p>
-			<input type="submit" class="button2" value="Create an account" /> <br>
-			<hr>
-			<p id="intro5"></p>
-</form:form>
+				<br>
+
+				<!-- <select type="text" class="form-control" name="securityQuestion"
+									id="securityQuestion" placeholder="Security Question">
+									<option value="" selected disabled hidden>Security Question</option>
+									<option value="What's your nick name?" >What's your nick name?</option>
+									<option value="What's your favourite game?" >What's your favourite game?</option>
+									<option value="What's your pet name?" >What's your pet name?</option>
+									<option value="What's your favourite car?" >What's your favourite car?</option>
+									<option value="What's your favourite book?" >What's your favourite book?</option>
+									<option value="What's your birthplace?" >What's your Birth Place?</option>
+			 -->
+
+
+
+				<p id="intro4">By clicking Create an account, you agree to our
+					Terms and that you have read our Data Policy, including our Cookie
+					Use.</p>
+				<input type="submit" class="button2" value="Create an account" />
+				<br>
+				<hr>
+				<p id="intro5"></p>
+			</form:form>
 		</div>
 
 	</div>

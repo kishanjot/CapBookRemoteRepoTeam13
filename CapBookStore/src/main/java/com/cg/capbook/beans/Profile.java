@@ -1,19 +1,23 @@
 package com.cg.capbook.beans;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Profile {
-
 	@Id
 	@NotEmpty
 	@Email
 	private String emailId;
 	@NotEmpty
 	private String password;
+	private String newPassword;
 	@NotEmpty
 	private String firstName;
 	@NotEmpty
@@ -25,13 +29,16 @@ public class Profile {
 	@NotEmpty
 	private String mobileNo;
 	private String securityQstn;
+	@NotEmpty
 	private String securityAns;
-
 	private String profilePic;
 	@NotEmpty
 	private String country;
 	@NotEmpty
 	private String city;
+	
+	@OneToMany
+	private List<Friend> friendList = new ArrayList<Friend>();
 
 	/*
 	 * @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -50,13 +57,14 @@ public class Profile {
 		super();
 	}
 
-	public Profile(@NotEmpty @Email String emailId, @NotEmpty String password, @NotEmpty String firstName,
-			@NotEmpty String lastName, String userName, @NotEmpty String dateOfBirth, String gender,
-			@NotEmpty String mobileNo, String securityQstn, String securityAns, String profilePic,
-			@NotEmpty String country, @NotEmpty String city) {
+	public Profile(@NotEmpty @Email String emailId, @NotEmpty String password, String newPassword,
+			@NotEmpty String firstName, @NotEmpty String lastName, String userName, @NotEmpty String dateOfBirth,
+			String gender, @NotEmpty String mobileNo, String securityQstn, @NotEmpty String securityAns,
+			String profilePic, @NotEmpty String country, @NotEmpty String city) {
 		super();
 		this.emailId = emailId;
 		this.password = password;
+		this.newPassword = newPassword;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
@@ -68,6 +76,13 @@ public class Profile {
 		this.profilePic = profilePic;
 		this.country = country;
 		this.city = city;
+	}
+	
+	public Profile(@NotEmpty @Email String emailId, @NotEmpty String password, String newPassword) {
+		super();
+		this.emailId = emailId;
+		this.password = password;
+		this.newPassword = newPassword;
 	}
 
 	public Profile(@NotEmpty @Email String emailId, @NotEmpty String password) {
@@ -88,6 +103,13 @@ public class Profile {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	public String getNewPassword() {
+		return newPassword;
+	}
+
+	public void setNewPassword(String newPassword) {
+		this.newPassword = newPassword;
 	}
 
 	public String getFirstName() {
@@ -156,7 +178,6 @@ public class Profile {
 	public String getSecurityQstn() {
 		return securityQstn;
 	}
-
 	public void setSecurityQstn(String securityQstn) {
 		this.securityQstn = securityQstn;
 	}
@@ -164,16 +185,23 @@ public class Profile {
 	public String getSecurityAns() {
 		return securityAns;
 	}
-
 	public void setSecurityAns(String securityAns) {
 		this.securityAns = securityAns;
 	}
 
+	public List<Friend> getFriendList() {
+		return friendList;
+	}
+	public void setFriendList(List<Friend> friendList) {
+		this.friendList = friendList;
+	}
+
 	@Override
 	public String toString() {
-		return "Profile [emailId=" + emailId + ", password=" + password + ", firstName=" + firstName + ", lastName="
-				+ lastName + ", userName=" + userName + ", dateOfBirth=" + dateOfBirth + ", gender=" + gender
-				+ ", mobileNo=" + mobileNo + ", securityQstn=" + securityQstn + ", securityAns=" + securityAns
-				+ ", profilePic=" + profilePic + ", country=" + country + ", city=" + city + "]";
+		return "Profile [emailId=" + emailId + ", password=" + password + ", newPassword=" + newPassword
+				+ ", firstName=" + firstName + ", lastName=" + lastName + ", userName=" + userName + ", dateOfBirth="
+				+ dateOfBirth + ", gender=" + gender + ", mobileNo=" + mobileNo + ", securityQstn=" + securityQstn
+				+ ", securityAns=" + securityAns + ", profilePic=" + profilePic + ", country=" + country + ", city="
+				+ city + "]";
 	}
 }

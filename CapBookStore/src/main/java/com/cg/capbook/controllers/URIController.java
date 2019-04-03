@@ -13,9 +13,6 @@ public class URIController {
 		return "indexPage";
 	}
 
-	@RequestMapping("/editProfile")
-	public String editProfile() { 
-		return  "userProfilePage"; }
 
 	@RequestMapping("/uploadPic")
 	public String uploadImage() {
@@ -24,9 +21,13 @@ public class URIController {
 
 	@RequestMapping("/forgotPassword")
 	public String forgotPasswordPage() {
-		return "ForgotAndResetPasswordPage";
+		return "forgotPasswordPage";
 	}
-
+	
+	/*
+	 * @RequestMapping("/resetPassword") public String changePasswordPage() { return
+	 * "changePasswordPage"; }
+	 */
 	@ModelAttribute
 	public Profile getProfile() {
 		profile=new Profile();

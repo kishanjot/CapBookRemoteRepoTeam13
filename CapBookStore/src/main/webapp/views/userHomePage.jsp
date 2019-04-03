@@ -137,7 +137,9 @@ border-radius: 50%;
 <div class="navbar">
 
   <a href="#">About Me</a>
-  <a href="#">Friends</a>
+
+ 
+  <a href="addFriend">Friends</a>
   <a href="#">Notifiactions</a>
    <a href="logoutUser" class="right">LogOut</a>
   <a href="editProfile"> Edit Profile</a>
@@ -147,15 +149,14 @@ border-radius: 50%;
 <div class="row">
   <div class="side">
     <h2>About Me</h2>
+    	 
+
+     <img src="/resources${login.profilePic}">
+
+    <p>${login.firstName} ${login.lastName}</p>
+
     
-     <div class="fakeimg" id="img" style="height:200px;">
-     </div>
-    <p>Some text about me in culpa qui officia deserunt mollit anim..</p>
-    <h3>More Text</h3>
-    <p>Lorem ipsum dolor sit ame.</p>
-    <div class="fakeimg" style="height:60px;">Image</div><br>
-    <div class="fakeimg" style="height:60px;">Image</div><br>
-    <div class="fakeimg" style="height:60px;">Image</div>
+
   </div>
   <div class="main">
     <h2>TITLE HEADING</h2>

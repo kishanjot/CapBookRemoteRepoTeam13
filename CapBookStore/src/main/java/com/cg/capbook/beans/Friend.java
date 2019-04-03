@@ -1,29 +1,69 @@
 package com.cg.capbook.beans;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
 public class Friend {
+
 	@Id
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private String friendId;
 	private String emailId;
-	private String firstName;
-	private String lastName;
-	
+	@Id
+	private int relationId;
+	private String senderEmailId;
+	private String receiverEmailId;
+	private String status;
+
 	@ManyToOne
 	private Profile profile;
-	
+
 	public Friend() {
 		super();
 	}
+	
+	public Friend(String friendId, String emailId, int relationId, String senderEmailId, String receiverEmailId,
+			String status, Profile profile) {
+		super();
+		this.friendId = friendId;
+		this.emailId = emailId;
+		this.relationId = relationId;
+		this.senderEmailId = senderEmailId;
+		this.receiverEmailId = receiverEmailId;
+		this.status = status;
+		this.profile = profile;
+	}
 
-	public Friend(String emailId, String firstName, String lastName, Profile profile) {
+	public Friend(String emailId, Profile profile) {
 		super();
 		this.emailId = emailId;
-		this.firstName = firstName;
-		this.lastName = lastName;
 		this.profile = profile;
+	}
+
+	public Friend(int relationId, String senderEmailId, String receiverEmailId, String status) {
+		super();
+		this.relationId = relationId;
+		this.senderEmailId = senderEmailId;
+		this.receiverEmailId = receiverEmailId;
+		this.status = status;
+	}
+
+	public Friend(String senderEmailId, String receiverEmailId, String status) {
+		super();
+		this.senderEmailId = senderEmailId;
+		this.receiverEmailId = receiverEmailId;
+		this.status = status;
+	}
+
+	public String getFriendId() {
+		return friendId;
+	}
+	public void setFriendId(String friendId) {
+		this.friendId = friendId;
 	}
 
 	public String getEmailId() {
@@ -33,18 +73,32 @@ public class Friend {
 		this.emailId = emailId;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public int getRelationId() {
+		return relationId;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+	public void setRelationId(int relationId) {
+		this.relationId = relationId;
 	}
 
-	public String getLastName() {
-		return lastName;
+	public String getSenderEmailId() {
+		return senderEmailId;
 	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setSenderEmailId(String senderEmailId) {
+		this.senderEmailId = senderEmailId;
+	}
+
+	public String getReceiverEmailId() {
+		return receiverEmailId;
+	}
+	public void setReceiverEmailId(String receiverEmailId) {
+		this.receiverEmailId = receiverEmailId;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Profile getProfile() {
@@ -56,7 +110,9 @@ public class Friend {
 
 	@Override
 	public String toString() {
-		return "Friend [emailId=" + emailId + ", firstName=" + firstName + ", lastName=" + lastName + ", profile="
-				+ profile + "]";
-	}
+		return "Friend [friendId=" + friendId + ", emailId=" + emailId + ", relationId=" + relationId
+				+ ", senderEmailId=" + senderEmailId + ", receiverEmailId=" + receiverEmailId + ", status=" + status
+				+ ", profile=" + profile + "]";
+	}	
 }
+
