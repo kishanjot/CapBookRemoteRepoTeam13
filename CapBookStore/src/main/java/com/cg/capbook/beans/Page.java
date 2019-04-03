@@ -20,9 +20,9 @@ public class Page {
 	private int pageId;
 	@OneToOne
 	private Profile profile;
-	@OneToMany(mappedBy="page", cascade = CascadeType.ALL)
-	@MapKey
-	private Map<Integer, Post> posts = new HashMap<Integer, Post>();
+	//@OneToMany(mappedBy="page", cascade = CascadeType.ALL)
+	//@MapKey
+	//private Map<Integer, Post> posts = new HashMap<Integer, Post>();
 	public Page() {
 		super();
 	}
@@ -30,7 +30,7 @@ public class Page {
 	public Page(int pageId, int pageLikes, Map<Integer, Post> posts) {
 		super();
 		this.pageId = pageId;
-		this.posts = posts;
+		//this.posts = posts;
 	}
 
 	public int getPageId() {
@@ -40,15 +40,15 @@ public class Page {
 		this.pageId = pageId;
 	}
 
-	public Map<Integer, Post> getPosts() {
+	/*public Map<Integer, Post> getPosts() {
 		return posts;
 	}
 	public void setPosts(Map<Integer, Post> posts) {
 		this.posts = posts;
-	}
+	}*/
 
 	@Override
 	public String toString() {
-		return "Page [pageId=" + pageId + ", profile=" + profile + ", posts=" + posts + "]";
+		return "Page [pageId=" + pageId + ", profile=" + profile + "]";
 	}
 }

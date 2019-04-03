@@ -4,9 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.MapKey;
 
 @Entity
 public class Message{
@@ -17,10 +14,6 @@ public class Message{
 	private String receiverEmailId;
 	private String message;
 	
-	@ManyToOne 
-	@MapKey
-	@JoinColumn(name="friendId")
-	private Friend friend;
 	
 	public Message() {
 		super();
@@ -60,46 +53,6 @@ public class Message{
 	}
 	public void setMessage(String message) {
 		this.message = message;
-	}
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((message == null) ? 0 : message.hashCode());
-		result = prime * result + messageId;
-		result = prime * result + ((receiverEmailId == null) ? 0 : receiverEmailId.hashCode());
-		result = prime * result + ((senderEmailId == null) ? 0 : senderEmailId.hashCode());
-		return result;
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Message other = (Message) obj;
-		if (message == null) {
-			if (other.message != null)
-				return false;
-		} else if (!message.equals(other.message))
-			return false;
-		if (messageId != other.messageId)
-			return false;
-		if (receiverEmailId == null) {
-			if (other.receiverEmailId != null)
-				return false;
-		} else if (!receiverEmailId.equals(other.receiverEmailId))
-			return false;
-		if (senderEmailId == null) {
-			if (other.senderEmailId != null)
-				return false;
-		} else if (!senderEmailId.equals(other.senderEmailId))
-			return false;
-		return true;
 	}
 	
 	@Override

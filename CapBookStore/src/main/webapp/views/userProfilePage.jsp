@@ -40,7 +40,7 @@ body {
 
 /* Style the navigation bar links */
 .navbar a {
-	float: left;
+	float: down;
 	display: block;
 	color: white;
 	text-align: center;
@@ -170,36 +170,21 @@ body {
 <body>
 
 	<div class="header" id=bgimg>
-		<div class="fakeimg" id="img" style="height: 200px;">
-
-			<a href="uploadPic"> <input type="button" class="button"
-				value=" upload" style="vertical-align: middle" />
-			</a>
-		</div>
-
+		
 		<div class="navbar">
 			<a href="#">Photos</a>
 			 <a href="#">Friends</a> 
 			 <a href="changePassword"> Change Password</a>
+             <a href="uploadPic"> Upload Pic</a>
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="side">
-			<h2>About Me</h2>
-
-			<div class="fakeimg" id="img" style="height: 200px;"></div>
-
 
 		</div>
 		<div class="main">
-			<h2>Add bio</h2>
-			<textarea id="subject" name="subject"
-				placeholder="Add somenthing about you..." style="height: 100px"></textarea>
-			<br>
-			<button class="button" style="vertical-align: middle">
-				<span>Post</span>
-			</button>
+			
 				  <p>${login.firstName} ${login.lastName}</p>
 			<br>
 			<h4>EDIT PRIVATE INFORMATION</h4><br><br>
@@ -222,11 +207,10 @@ body {
 								<br>
 						</form><br>
                         
-                        
-
 <h4>EDIT ADDRESS</h4><br><br>
 		<form action="updateInfoCity" method="post">
-							City &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; 									<input type="text" name="city" id="name" />
+							City &nbsp;&nbsp; &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp;&nbsp; &nbsp; &nbsp;&nbsp; 									
+							<input type="text" name="city" id="name" />
                                  <input type="submit" value="Update" />
 						</form><br>
         <form action="updateInfoCountry" method="post">
@@ -235,15 +219,8 @@ body {
 							 /><input
 								type="submit" value="Update" />
 						</form><br>
-  
-
-
 
 		</div>
-	</div>
-
-	<div class="footer">
-		<h2>Footer</h2>
 	</div>
 
 </body>

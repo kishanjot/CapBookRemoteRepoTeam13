@@ -1,4 +1,4 @@
-package com.cg.capbook.beans;
+/*package com.cg.capbook.beans;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +18,7 @@ public class Comment {
 	private int commentId;
 	private String commentContent;
 	private String commentPerson;
-	
+	//
 	@ManyToOne
 	 @MapKey
 	@JoinColumn(name="postId")
@@ -109,4 +109,4 @@ public class Comment {
 		return "Comment [commentId=" + commentId + ", commentContent=" + commentContent + ", commentPerson="
 				+ commentPerson + "]";
 	}
-}
+}*/

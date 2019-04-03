@@ -1,3 +1,4 @@
+<%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -124,6 +125,41 @@ border-radius: 50%;
     width: 100%;
   }
 }
+
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
 </style>
 </head>
 <body>
@@ -139,7 +175,17 @@ border-radius: 50%;
   <a href="#">About Me</a>
 
  
-  <a href="addFriend">Friends</a>
+ <!--  <a href="#">Friends</a> -->
+  
+  <div class="dropdown">
+  <button class="dropbtn">Friends</button>
+  <div class="dropdown-content">
+    <a href="#">Link 1</a>
+    <a href="#">Link 2</a>
+    <a href="#">Link 3</a>
+  </div>
+</div>
+  
   <a href="#">Notifiactions</a>
    <a href="logoutUser" class="right">LogOut</a>
   <a href="editProfile"> Edit Profile</a>
@@ -161,17 +207,24 @@ border-radius: 50%;
   <div class="main">
     <h2>TITLE HEADING</h2>
     <h5>Title description, Dec 7, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-    <br>
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Sep 2, 2017</h5>
-    <div class="fakeimg" style="height:200px;">Image</div>
-    <p>Some text..</p>
-    <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-  </div>
-</div>
+   	<form action="updatePost" method="post">
+									<textarea rows="4" cols="80" name="postMessage"></textarea>
+									</p>
+									<div class="w3-button w3-theme">
+										<i class="fa fa-pencil"></i> 
+										<input type="submit" class="w3-button w3-theme" value="Post" />
+										
+									</div>
+								</form>
+								
+								<form action="showAllPosts" method="post">
+										<input type="submit" class="w3-button w3-theme" value="See Old Posts" />
+								</form>
+
+							<s:forEach var="abc" items="${posts}">
+                                Posted By:- ${abc.profile.emailId}<br>
+                               Message :- ${abc.postContent}<br><br>
+                                </s:forEach>
 
 <div class="footer">
   <h2>Footer</h2>

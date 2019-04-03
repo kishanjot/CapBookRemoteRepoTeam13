@@ -2,9 +2,7 @@ package com.cg.capbook.services;
 
 import java.util.List;
 import org.springframework.web.multipart.MultipartFile;
-import com.cg.capbook.beans.Comment;
 import com.cg.capbook.beans.Friend;
-import com.cg.capbook.beans.Post;
 import com.cg.capbook.beans.Profile;
 import com.cg.capbook.exceptions.EmailAlreadyExistsException;
 import com.cg.capbook.exceptions.IncorrectSecurityAnswer;
@@ -29,24 +27,17 @@ public interface CapbookServices {
 	Profile  forgotPassword(String emaildId, String password,String securityQstn, String securityAns) throws IncorrectSecurityAnswer, NoUserFoundException, IncorrectSecurityQusetion;
 
 	
-	public boolean confirmFriendRequest(String senderId,String receiverId); 
-	public boolean sendFriendRequest(String senderId, String receiverId); 
+	public boolean confirmFriendRequest(String senderId,String receiverId) throws NoUserFoundException; 
+	public boolean sendFriendRequest(String senderId, String receiverId) throws NoUserFoundException; 
 	public boolean rejectFriendRequest(String senderId,String receiverId); 
 	public List<Friend> showAllFriendRequests(String emailId); 
 	public List<Friend> showAllSentFriendRequests(String emailId); 
 	public List<Friend> showAllFriends(String emailId);
+	public Friend findFriendRequest(String senderId,String receiverId); 
 
 
 	Profile getProfile(String emailId);
 	Profile update(Profile login);
 
-	
-	Post createPost(Post post);
-	Post updatePostLikes(Post post);
-	Post updatePostDislikes(Post post);
-
-	
-	Post addPostComment(Comment comment);
-	List<Post> getPosts();
 
 }

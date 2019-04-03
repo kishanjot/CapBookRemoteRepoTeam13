@@ -9,15 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.cg.capbook.beans.Comment;
 import com.cg.capbook.beans.Friend;
 import com.cg.capbook.beans.Page;
-import com.cg.capbook.beans.Post;
 import com.cg.capbook.beans.Profile;
-import com.cg.capbook.daoservices.CommentDAO;
 import com.cg.capbook.daoservices.FriendDAO;
 import com.cg.capbook.daoservices.PageDAO;
-import com.cg.capbook.daoservices.PostDAO;
 import com.cg.capbook.daoservices.ProfileDAO;
 import com.cg.capbook.exceptions.EmailAlreadyExistsException;
 import com.cg.capbook.exceptions.IncorrectSecurityAnswer;
@@ -32,21 +28,22 @@ import com.cg.capbook.exceptions.UserDetailsNotFoundException;
 public class CapbookServiceImpl implements CapbookServices{
 
 	@Autowired
-	ProfileDAO profileDao;
+	CapbookServices capbookServices;
 	@Autowired
-	PostDAO postDao;
+	ProfileDAO profileDao;
+
 	@Autowired
 	PageDAO pageDao;
 	@Autowired
 	FriendDAO friendDao;
-	@Autowired
-	CommentDAO commentDao;
+	//@Autowired
+	//CommentDAO commentDao;
 
 	Profile profiles;
-	Post posts;
+
 	Page pages;
 	Friend friends;
-	Comment comments;
+	//Comment comments;
 	static String currentEmailId;
 	static String currentPassword;
 
@@ -79,7 +76,6 @@ public class CapbookServiceImpl implements CapbookServices{
 	@Override
 	public Profile editProfile(String emailId,String userName) throws InvalidEmailIdException, NoUserFoundException {
 		Profile profile1=getUserDetails(emailId);
-		profile1.setUserName(userName);
 		return profileDao.save(profile1);
 	}
 
@@ -142,12 +138,63 @@ public class CapbookServiceImpl implements CapbookServices{
 		else
 			throw new IncorrectSecurityQusetion("Security Answer Incorrect!");
 	}
+	
+	/*@Override
+	public Friend findFriendRequest(String senderId, String receiverId) {
+		return friendDao.findFriendRequest(senderId, receiverId);
+	}*/
 
 	@Override
-	public boolean addFriend(String emailId, Friend friend) throws UserDetailsNotFoundException, NoUserFoundException {
-		Profile profile = getUserDetails(emailId);
-		return profile.getFriendList().add(friend);
+	public boolean confirmFriendRequest(String senderId, String receiverId) throws NoUserFoundException {
+        Profile senderProfile=capbookServices.getUserDetails(senderId); 
+        Profile recieverProfile=capbookServices.getUserDetails(receiverId); 
+		Friend friend1=new Friend(senderId, recieverProfile);
+		friendDao.save(friend1);
+		Friend friend2=new Friend(receiverId, senderProfile);
+		friendDao.save(friend2);
+		//System.out.println(friend1.getEmailId()+""+friend1.getProfile().getEmailId());
+	//	System.out.println(friend2.getEmailId()+""+friend2.getProfile().getEmailId());
+		
+		Friend friend=findFriendRequest(senderId, receiverId);
+		friend.setStatus("Friends");
+		friendDao.save(friend);
+		return false;
 	}
+
+	@Override
+	public boolean sendFriendRequest(String senderId, String receiverId) throws NoUserFoundException {
+		capbookServices.getUserDetails(senderId); 
+		capbookServices.getUserDetails(receiverId);
+		Friend friend = new Friend();
+		friend.setSenderEmailId(senderId);
+		friend.setReceiverEmailId(receiverId);
+		friend.setStatus("Pending..");
+		friendDao.save(friend);
+		return true; 
+	}
+
+	@Override
+	public boolean rejectFriendRequest(String senderId, String receiverId) {
+		Friend friend=findFriendRequest(senderId, receiverId);
+		friend.setStatus("Rejected..");
+		friendDao.save(friend);
+		return false;
+	}
+
+	/*@Override
+	public List<Friend> showAllFriendRequests(String emailId) {
+		return friendDao.showAllFriendRequests(emailId);
+	}
+
+	@Override
+	public List<Friend> showAllSentFriendRequests(String emailId) {
+		return friendDao.showAllSentFriendRequests(emailId);
+	}
+
+	@Override
+	public List<Friend> showAllFriends(String emailId) {
+		return friendDao.showAllFriends(emailId);
+	}*/
 
 	@Override
 	public Profile getProfile(String emailId) {
@@ -155,40 +202,37 @@ public class CapbookServiceImpl implements CapbookServices{
 		return null;
 	}
 
-	@Override
-	public Post createPost(Post post) {
-		post.setEmailId(currentEmailId);
-		postDao.save(post);
-		return post;
-	}
 
-	@Override
-	public Post updatePostLikes(Post post) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Post updatePostDislikes(Post post) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Post addPostComment(Comment comment) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Post> getPosts() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	
 	@Override
 	public Profile update(Profile login) {
 		return profileDao.save(login);
 	}
+
+	@Override
+	public List<Friend> showAllFriendRequests(String emailId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Friend> showAllSentFriendRequests(String emailId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Friend> showAllFriends(String emailId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Friend findFriendRequest(String senderId, String receiverId) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
 

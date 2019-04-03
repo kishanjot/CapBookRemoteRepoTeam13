@@ -4,23 +4,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 
 @Entity
 public class Friend {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private String friendId;
 	private String emailId;
-	@Id
+	
 	private int relationId;
 	private String senderEmailId;
 	private String receiverEmailId;
 	private String status;
 
-	@ManyToOne
-	private Profile profile;
+//	@ManyToOne
+	//private Profile profile;
 
 	public Friend() {
 		super();
@@ -35,13 +34,13 @@ public class Friend {
 		this.senderEmailId = senderEmailId;
 		this.receiverEmailId = receiverEmailId;
 		this.status = status;
-		this.profile = profile;
+		//this.profile = profile;
 	}
 
 	public Friend(String emailId, Profile profile) {
 		super();
 		this.emailId = emailId;
-		this.profile = profile;
+		//this.profile = profile;
 	}
 
 	public Friend(int relationId, String senderEmailId, String receiverEmailId, String status) {
@@ -101,18 +100,18 @@ public class Friend {
 		this.status = status;
 	}
 
-	public Profile getProfile() {
+	/*public Profile getProfile() {
 		return profile;
 	}
 	public void setProfile(Profile profile) {
 		this.profile = profile;
-	}
+	}*/
 
 	@Override
 	public String toString() {
 		return "Friend [friendId=" + friendId + ", emailId=" + emailId + ", relationId=" + relationId
 				+ ", senderEmailId=" + senderEmailId + ", receiverEmailId=" + receiverEmailId + ", status=" + status
-				+ ", profile=" + profile + "]";
+				+ ", profile= ]";
 	}	
 }
 

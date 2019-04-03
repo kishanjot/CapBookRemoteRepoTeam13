@@ -14,7 +14,7 @@
 </head>
 <style>
 body {
-	height: 750px;
+	height: 850px;
 }
 
 .fb-header-base {
@@ -91,7 +91,7 @@ body {
 	left: 0px;
 	top: 90px;
 	width: 100%;
-	height: 645px;
+	height: 845px;
 }
 
 #intro1 {
@@ -250,13 +250,12 @@ body {
 	<!-- Register -->
 	<div class="fb-body">
 		<div id="intro1" class="fb-body">
-			Capbook helps you connect and share with the <br> people in your
-			life.
+			Capbook helps you connect and share with the <br> people in organization.
 		</div>
 		<div id="intro6" class="fb-body"></div>
 		<div id="intro2" class="fb-body">Create an account</div>
 		<div id="img2" class="fb-body">
-			<img src="" />
+			<img src="https://www.apec.org/-/media/Images/FactSheets/ThinkstockPhotos-486140535.jpg?h=386&w=400&la=en&hash=39059B497982A87CE6F70F8C18E98F80B784F4B2" />
 		</div>
 		<div id="intro3" class="fb-body">It's free and always will be.</div>
 		<div id="form3" class="fb-body">
@@ -305,24 +304,10 @@ body {
 				<form:input type="date" id="namebox" path="dateOfBirth" />
 				<br>
 				<br>
-				<input type="radio" id="r-b" name="sex" value="male"
-					checked="checked" />Male
+				<input type="radio" id="r-b" name="sex" value="male"/>Male
 			<input type="radio" id="r-b" name="sex" value="female" />Female<br>
 				<br>
-
-				<!-- <select type="text" class="form-control" name="securityQuestion"
-									id="securityQuestion" placeholder="Security Question">
-									<option value="" selected disabled hidden>Security Question</option>
-									<option value="What's your nick name?" >What's your nick name?</option>
-									<option value="What's your favourite game?" >What's your favourite game?</option>
-									<option value="What's your pet name?" >What's your pet name?</option>
-									<option value="What's your favourite car?" >What's your favourite car?</option>
-									<option value="What's your favourite book?" >What's your favourite book?</option>
-									<option value="What's your birthplace?" >What's your Birth Place?</option>
-			 -->
-
-
-
+				
 				<p id="intro4">By clicking Create an account, you agree to our
 					Terms and that you have read our Data Policy, including our Cookie
 					Use.</p>
@@ -334,13 +319,13 @@ body {
 		</div>
 
 	</div>
-	<div class="fb-body-footer">
+	<!-- <!-- <div class="fb-body-footer">
 		<div id="fb-body-footer-base" class="fb-body-footer">
 			English (UK)<br>
 			<hr>
 			Sign Up,Log In:
-		</div>
-	</div>
+		</div> -->
+	</div> -->
 
 </body>
 

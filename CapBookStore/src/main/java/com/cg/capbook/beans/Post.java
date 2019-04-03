@@ -1,10 +1,7 @@
 package com.cg.capbook.beans;
-
-import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
-
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -13,166 +10,66 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapKey;
 import javax.persistence.OneToMany;
-
+import javax.persistence.SequenceGenerator;
+//abcd
 @Entity
 public class Post {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.SEQUENCE)
-	private int postId;
-	private String emailId;
-	private String postMaterial;
-	@Column(columnDefinition="BLOB")
-	private byte[] postPic;
-	private int postLikes;
-	private int postDislikes;
-	
-	@ManyToOne
-	private Page page;
-	@ManyToOne
-	private Profile profile;
-	
-	@OneToMany(cascade = CascadeType.ALL/* ,fetch=FetchType.EAGER */ )
-	@MapKey
-	private Map<Integer, Comment> comments;
-	
+	@Override
+	public String toString() {
+		return "Post [postId=" + postId + ", postContent=" + postContent + ", postPic=" + postPic + ", profile="
+				+ profile + "]";
+	}
 	public Post() {
 		super();
+		// TODO Auto-generated constructor stub
 	}
-
-	public Post(String emailId, String postMaterial, byte[] postPic, int postLikes, int postDislikes,
-			Map<Integer, Comment> comments) {
+	public Post(int postId, String postContent, String postPic, Profile profile) {
 		super();
-		this.emailId = emailId;
-		this.postMaterial = postMaterial;
+		this.postId = postId;
+		this.postContent = postContent;
 		this.postPic = postPic;
-		this.postLikes = postLikes;
-		this.postDislikes = postDislikes;
-		this.comments = comments;
+		this.profile = profile;
 	}
-
+	public Post(String postContent, Profile profile) {
+		this.postContent=postContent;
+		this.profile=profile;
+	}
 	public int getPostId() {
 		return postId;
 	}
 	public void setPostId(int postId) {
 		this.postId = postId;
 	}
-
-	public String getEmailId() {
-		return emailId;
+	public String getPostContent() {
+		return postContent;
 	}
-
-	public void setEmailId(String emailId) {
-		this.emailId = emailId;
+	public void setPostContent(String postContent) {
+		this.postContent = postContent;
 	}
-
-	public String getPostMaterial() {
-		return postMaterial;
-	}
-	public void setPostMaterial(String postMaterial) {
-		this.postMaterial = postMaterial;
-	}
-
-	public byte[] getPostPic() {
+	public String getPostPic() {
 		return postPic;
 	}
-	public void setPostPic(byte[] postPic) {
+	public void setPostPic(String postPic) {
 		this.postPic = postPic;
 	}
-
-	public int getPostLikes() {
-		return postLikes;
-	}
-	public void setPostLikes(int postLikes) {
-		this.postLikes = postLikes;
-	}
-
-
-	public Page getPage() {
-		return page;
-	}
-
-	public void setPage(Page page) {
-		this.page = page;
-	}
-
 	public Profile getProfile() {
 		return profile;
 	}
-
 	public void setProfile(Profile profile) {
 		this.profile = profile;
 	}
-
-	public int getPostDislikes() {
-		return postDislikes;
-	}
-	public void setPostDislikes(int postDislikes) {
-		this.postDislikes = postDislikes;
-	}
-
-	public Map<Integer, Comment> getComments() {
-		return comments;
-	}
-	public void setComments(Map<Integer, Comment> comments) {
-		this.comments = comments;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((comments == null) ? 0 : comments.hashCode());
-		result = prime * result + ((emailId == null) ? 0 : emailId.hashCode());
-		result = prime * result + postDislikes;
-		result = prime * result + postId;
-		result = prime * result + postLikes;
-		result = prime * result + ((postMaterial == null) ? 0 : postMaterial.hashCode());
-		result = prime * result + Arrays.hashCode(postPic);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Post other = (Post) obj;
-		if (comments == null) {
-			if (other.comments != null)
-				return false;
-		} else if (!comments.equals(other.comments))
-			return false;
-		if (emailId == null) {
-			if (other.emailId != null)
-				return false;
-		} else if (!emailId.equals(other.emailId))
-			return false;
-		if (postDislikes != other.postDislikes)
-			return false;
-		if (postId != other.postId)
-			return false;
-		if (postLikes != other.postLikes)
-			return false;
-		if (postMaterial == null) {
-			if (other.postMaterial != null)
-				return false;
-		} else if (!postMaterial.equals(other.postMaterial))
-			return false;
-		if (!Arrays.equals(postPic, other.postPic))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return "Post [postId=" + postId + ", emailId=" + emailId + ", postMaterial=" + postMaterial + ", postPic="
-				+ Arrays.toString(postPic) + ", postLikes=" + postLikes + ", postDislikes=" + postDislikes + ", page="
-				+ page + ", profile=" + profile + ", comments=" + comments + "]";
-	}
-
-	
+	@Id
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	private int postId;
+	private String postContent,postPic;
+	@ManyToOne
+	private Profile profile;
 }
+	//@OneToMany(mappedBy="posts",cascade=CascadeType.ALL,orphanRemoval=true)
+	//private List<Likes> likes;
+	//@OneToMany(mappedBy="posts",cascade=CascadeType.ALL,orphanRemoval=true)
+	//private List<Dislikes> dislikes;
+	//@OneToMany(mappedBy="posts",cascade=CascadeType.ALL,fetch=FetchType.EAGER,orphanRemoval=true)
+	//@MapKey
+	//private Map<Integer, Comments> comments;
+	
