@@ -1,4 +1,5 @@
 <%@ taglib prefix="s" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,7 +166,7 @@ border-radius: 50%;
 <body>
 
 <div class="header" id=bgimg>
-  <div class="fakeimg" id="img" style="height:200px; ">
+  <!--<div class="fakeimg" id="img" style="height:200px; ">-->
 
   </div>
 </div>
@@ -185,8 +186,8 @@ border-radius: 50%;
     <a href="#">Link 3</a>
   </div>
 </div>
-  
-  <a href="#">Notifiactions</a>
+ 
+  <a href="#">Notifications</a>
    <a href="logoutUser" class="right">LogOut</a>
   <a href="editProfile"> Edit Profile</a>
  
@@ -205,8 +206,8 @@ border-radius: 50%;
 
   </div>
   <div class="main">
-    <h2>TITLE HEADING</h2>
-    <h5>Title description, Dec 7, 2017</h5>
+    <h2>Hey, What's Going On In Your Life? Post Here</h2>
+   
    	<form action="updatePost" method="post">
 									<textarea rows="4" cols="80" name="postMessage"></textarea>
 									</p>
@@ -220,14 +221,12 @@ border-radius: 50%;
 								<form action="showAllPosts" method="post">
 										<input type="submit" class="w3-button w3-theme" value="See Old Posts" />
 								</form>
-
+<div style="background-color:lightblue">
 							<s:forEach var="abc" items="${posts}">
                                 Posted By:- ${abc.profile.emailId}<br>
                                Message :- ${abc.postContent}<br><br>
+                               <hr>
                                 </s:forEach>
-
-<div class="footer">
-  <h2>Footer</h2>
 </div>
 
 </body>

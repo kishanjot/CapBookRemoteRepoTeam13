@@ -146,23 +146,26 @@ public class CapbookServiceImpl implements CapbookServices{
 
 	@Override
 	public boolean confirmFriendRequest(String senderId, String receiverId) throws NoUserFoundException {
-        Profile senderProfile=capbookServices.getUserDetails(senderId); 
-        Profile recieverProfile=capbookServices.getUserDetails(receiverId); 
-		Friend friend1=new Friend(senderId, recieverProfile);
-		friendDao.save(friend1);
-		Friend friend2=new Friend(receiverId, senderProfile);
-		friendDao.save(friend2);
-		//System.out.println(friend1.getEmailId()+""+friend1.getProfile().getEmailId());
-	//	System.out.println(friend2.getEmailId()+""+friend2.getProfile().getEmailId());
 		
-		Friend friend=findFriendRequest(senderId, receiverId);
-		friend.setStatus("Friends");
-		friendDao.save(friend);
+		 /* Profile senderProfile=capbookServices.getUserDetails(senderId); Profile
+		  recieverProfile=capbookServices.getUserDetails(receiverId); Friend
+		  friend1=new Friend(senderId, recieverProfile); friendDao.save(friend1);
+		  Friend friend2=new Friend(receiverId, senderProfile);
+		  friendDao.save(friend2);
+		  //System.out.println(friend1.getEmailId()+""+friend1.getProfile().getEmailId(
+		  )); //
+		  System.out.println(friend2.getEmailId()+""+friend2.getProfile().getEmailId())
+		  ;
+		  
+		  Friend friend=findFriendRequest(senderId, receiverId);
+		  friend.setStatus("Friends"); friendDao.save(friend);
+		 */
 		return false;
 	}
 
 	@Override
 	public boolean sendFriendRequest(String senderId, String receiverId) throws NoUserFoundException {
+		/*
 		capbookServices.getUserDetails(senderId); 
 		capbookServices.getUserDetails(receiverId);
 		Friend friend = new Friend();
@@ -170,14 +173,17 @@ public class CapbookServiceImpl implements CapbookServices{
 		friend.setReceiverEmailId(receiverId);
 		friend.setStatus("Pending..");
 		friendDao.save(friend);
+		*/
 		return true; 
 	}
 
 	@Override
 	public boolean rejectFriendRequest(String senderId, String receiverId) {
+		/*
 		Friend friend=findFriendRequest(senderId, receiverId);
 		friend.setStatus("Rejected..");
 		friendDao.save(friend);
+		*/
 		return false;
 	}
 

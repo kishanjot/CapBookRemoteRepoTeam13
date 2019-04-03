@@ -24,6 +24,11 @@ public class URIController {
 		return "forgotPasswordPage";
 	}
 	
+	@RequestMapping("/homePage")
+	public String homePage() {
+		return "userHomePage";
+	}
+	
 	/*
 	 * @RequestMapping("/resetPassword") public String changePasswordPage() { return
 	 * "changePasswordPage"; }
@@ -33,5 +38,7 @@ public class URIController {
 		profile=new Profile();
 		return profile;
 	}
+	
+	
 	
 }

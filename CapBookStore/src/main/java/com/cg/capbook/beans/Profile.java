@@ -37,21 +37,7 @@ public class Profile {
 	private String city;
 	 @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL,fetch = FetchType.EAGER )
 	private List<Post> posts;
-	//@OneToMany
-	//private List<Friend> friendList = new ArrayList<Friend>();
-
-	/*
-	 * @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	 * 
-	 * @JoinTable(name = "profile_friend", joinColumns =
-	 * { @JoinColumn(name="emailId") }, inverseJoinColumns = { @JoinColumn(name =
-	 * "friendId") }) private Map<Integer, Friend> friends;
-	 * 
-	 * @OneToMany(mappedBy = "profile", cascade = CascadeType.ALL
-	 * ,fetch=FetchType.EAGER )
-	 * 
-	 * @MapKey private Map<Integer, Post> posts;
-	 */
+	
 
 	public Profile() {
 		super();

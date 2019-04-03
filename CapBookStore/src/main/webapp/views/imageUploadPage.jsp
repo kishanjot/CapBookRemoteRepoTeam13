@@ -51,8 +51,7 @@ body, html {
 
 </head>
 <body>
-<div class="bg-text">
-<h1>Capbook Profile Picture Upload</h1>
+
 </div>
 
 	<div class="bg-image"></div>
@@ -71,7 +70,7 @@ body, html {
 				<font size="20">${errorMessage}</font>
 			</div>
    <img src="/resources${profile.profilePic}"> <br />
-			 <a href="userProfilePage">Go Back To User Profile Page</a>
+	<a href="userProfilePage">Go Back To User Profile Page</a>		 
 </div>
 
 </body>

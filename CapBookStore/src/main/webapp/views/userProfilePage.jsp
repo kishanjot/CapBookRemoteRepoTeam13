@@ -172,6 +172,7 @@ body {
 	<div class="header" id=bgimg>
 		
 		<div class="navbar">
+		 <a href="homePage"> Home Page</a>
 			<a href="#">Photos</a>
 			 <a href="#">Friends</a> 
 			 <a href="changePassword"> Change Password</a>
@@ -185,7 +186,7 @@ body {
 		</div>
 		<div class="main">
 			
-				  <p>${login.firstName} ${login.lastName}</p>
+				  <p>Hey ${login.firstName} ${login.lastName}, You Can Change Your Personal Details Here</p>
 			<br>
 			<h4>EDIT PRIVATE INFORMATION</h4><br><br>
             <form action="updateInfoFirstName" method="post">
